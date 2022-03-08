@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{multicol,multirow}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection.}{0.3em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection.}{0.3em}{}
+
+\titlespacing{\section}{0pt}{*2}{*2}
+\titlespacing{\subsection}{0pt}{*1}{*1}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{listings}
+\lstloadlanguages{Lisp}
+\lstset{extendedchars=false,
+	breaklines=true,
+	breakatwhitespace=true,
+	keepspaces = true,
+	tabsize=2
+}
+\begin{document}
+
+\section*{Отчет по лабораторной работе № 1 \\
+по курсу \guillemotleft Функциональное программирование\guillemotright}
+\begin{flushright}
+Студент группы М8О-307-19 МАИ \textit{Инютин Максим Андреевич}, \textnumero 10 по списку \\
+\makebox[7cm]{Контакты: {\tt mainyutin@gmail.com} \hfill} \\
+\makebox[7cm]{Работа выполнена: 08.03.2022 \hfill} \\
+\ \\
+Преподаватель: Иванов Дмитрий Анатольевич, доц. каф. 806 \\
+\makebox[7cm]{Отчет сдан: \hfill} \\
+\makebox[7cm]{Итоговая оценка: \hfill} \\
+\makebox[7cm]{Подпись преподавателя: \hfill} \\
+
+\end{flushright}
+
+\section{Тема работы}
+Примитивные функции и особые операторы Common Lisp.
+
+\section{Цель работы}
+Научиться вводить S-выражения в Lisp-систему, определять переменные и функции, работать с условными операторами, работать с числами, используя схему линейной и древовидной рекурсии.
+
+\section{Задание (вариант № 1.48)}
+Реализовать на языке Common Lisp программу для умножения двух целых чисел за логарифмическое число шагов. Можно использовать функции сложения, вычитания, умножения и деления числа на $2$, но нельзя умножать произвольные числа.
+
+\section{Оборудование студента}
+Процессор Intel Core i7-9750H (12) @ 4.5GHz, память: 32 Gb, разрядность системы: 64.
+
+\section{Программное обеспечение}
+ОС Ubuntu 20.04.4 LTS, комилятор GNU CLISP 2.49.92, текстовый редактор Atom 1.58.0
+
+\pagebreak
+\section{Идея, метод, алгоритм}
+Рассмотрим умножение двух чисел $a$ и $b$ на примере:
+
+$7 \cdot 13 = 7 \cdot (1 + 4 + 8) = (7 \cdot 1) + (7 \cdot 4) + (7 \cdot 8) = (7 \cdot {2 ^ 0}) + (7 \cdot {2 ^ 2}) + (7 \cdot {2 ^ 3})$.
+
+Так как ${13}_{10} = {1101}_{2}$, то можно умножать $7$ на два $2$, получая степени двойки, и прибалвять к результату, если на соответствующем бите стоит $1$.
+
+Мы рассмотрим все биты числа, которых не более $\log_2{b}$. Умножение числа $a$ на два будет выполнено не более $\log_2{b}$ раз. По итогу будет совершенно порядка логарифма операций.
+
+\section{Сценарий выполнения работы}
+
+\section{Распечатка программы и её результаты}
+
+\subsection{Исходный код}
+\lstinputlisting{./lab1.lisp}
+
+\pagebreak
+\subsection{Результаты работы}
+\lstinputlisting{./log1.txt}
+
+\pagebreak
+\section{Дневник отладки}
+\begin{tabular}{|p{50pt}|p{80pt}|p{140pt}|p{140pt}|}
+\hline
+Дата & Событие & Действие по исправлению & Примечание \\
+\hline
+\end{tabular}
+
+\section{Замечания автора по существу работы}
+На практике гораздо проще просто перемножить два числа, однако в учебных целях считаю полезным реализовывать привычные операции с ограничениями.
+
+\section{Выводы}
+Я познакомился с синтаксисом языка Common Lisp. Было непривычно и сложно правильно расставить скобки, что и было основной трудностью.
+
+Составленная программа работает за логарифмическое время. Подобный подход используется для быстрого возведения в степень чисел.
+
+\end{document}
