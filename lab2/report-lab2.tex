@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+
+% Специальный шрифт, чтобы лучше читалось
+\usepackage{libertine}
+
+\usepackage{fullpage}
+\usepackage{multicol,multirow}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection.}{0.3em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection.}{0.3em}{}
+
+\titlespacing{\section}{0pt}{*2}{*2}
+\titlespacing{\subsection}{0pt}{*1}{*1}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{listings}
+\lstloadlanguages{Lisp}
+\lstset{extendedchars=false,
+	breaklines=true,
+	breakatwhitespace=true,
+	keepspaces = true,
+	tabsize=8
+}
+\begin{document}
+
+\section*{Отчет по лабораторной работе № 2 \\
+по курсу \guillemotleft Функциональное программирование\guillemotright}
+\begin{flushright}
+Студент группы М8О-307-19 МАИ \textit{Инютин Максим Андреевич}, \textnumero 10 по списку \\
+\makebox[7cm]{Контакты: {\tt mainyutin@gmail.com} \hfill} \\
+\makebox[7cm]{Работа выполнена: 24.03.2022 \hfill} \\
+\ \\
+Преподаватель: Иванов Дмитрий Анатольевич, доц. каф. 806 \\
+\makebox[7cm]{Отчет сдан: \hfill} \\
+\makebox[7cm]{Итоговая оценка: \hfill} \\
+\makebox[7cm]{Подпись преподавателя: \hfill} \\
+
+\end{flushright}
+
+\section{Тема работы}
+Простейшие функции работы со списками Common Lisp.
+
+\section{Цель работы}
+Научиться конструировать списки, находить элемент в списке, использовать схему линейной и древовидной рекурсии для обхода и реконструкции плоских списков и деревьев.
+
+\section{Задание (вариант № 2.35)}
+Запрограммируйте рекурсивно на языке Common Lisp функцию, вычисляющую множество всех подмножеств своего аргумента.
+
+Исходное множество представляется списком его элементов без повторений, а множество подмножеств --- списком списков.
+
+\section{Оборудование студента}
+Процессор Intel Core i7-9750H (12) @ 4.5GHz, память: 32 Gb, разрядность системы: 64.
+
+\section{Программное обеспечение}
+ОС Ubuntu 20.04.4 LTS, комилятор GNU CLISP 2.49.92, текстовый редактор Atom 1.58.0
+
+\pagebreak
+\section{Идея, метод, алгоритм}
+Буду хранить текущее подмножество в переменной $tmp$, а множество всех подмножеств в $res$. На текущем шаге рекурсии проверяю, пустой ли список $lst$. Если так, то добавляю в $res$ текущее подмножество $tmp$, иначе вызову эту же функцию от хвоста $lst$, добавляя и не добавляя голову в конец $tmp$.
+
+Алгоритм использует древовидную рекурсию. На каждом шаге делается ещё два вызова функции, а $append$ двух списков имеет линейную сложность, поэтому асимптотика $O(2 ^ n \cdot n)$, где $n$ --- длинна исходного списка.
+
+\section{Сценарий выполнения работы}
+
+\section{Распечатка программы и её результаты}
+
+\subsection{Исходный код}
+\lstinputlisting{./lab2.lisp}
+
+\pagebreak
+\subsection{Результаты работы}
+\lstinputlisting{./log2.txt}
+
+\pagebreak
+\section{Дневник отладки}
+\begin{tabular}{|p{50pt}|p{80pt}|p{140pt}|p{140pt}|}
+\hline
+Дата & Событие & Действие по исправлению & Примечание \\
+\hline
+\end{tabular}
+
+\section{Замечания автора по существу работы}
+
+Можно уменьшить сложность алгоритма до $O(2 ^ n)$, если не хранить множество всех множеств, а сразу печатать подмножества, но в лабораторной работе требуется вернуть список списков.
+
+\section{Выводы}
+Я познакомился со списками в Common Lisp. Работа с ними очень похожа на работу со списками в логическом языке, поэтому было несложно выполнить работу.
+
+\end{document}

@@ -1,0 +1,22 @@
+[1]> (load "lab2.lisp")
+;; Loading file lab2.lisp ...
+;; Loaded file lab2.lisp
+#P"/home/engineerxl/Study/6 term/functional-programming/lab2/lab2.lisp"
+[2]> (subsets `())
+(NIL)
+[3]> (subsets `(1))
+(NIL (1))
+[4]> (subsets `(1 2))
+(NIL (2) (1) (1 2))
+[5]> (subsets `(2 1))
+(NIL (1) (2) (2 1))
+[6]> (subsets `(1 2 3))
+(NIL (3) (2) (2 3) (1) (1 3) (1 2) (1 2 3))
+[7]> (subsets `(3 2 1))
+(NIL (1) (2) (2 1) (3) (3 1) (3 2) (3 2 1))
+[8]> (subsets `(4 2 3 1))
+(NIL (1) (3) (3 1) (2) (2 1) (2 3) (2 3 1) (4) (4 1) (4 3) (4 3 1) (4 2) (4 2 1) (4 2 3) (4 2 3 1))
+[9]> (subsets (list 1 (list 2 "a" 3) "b"))
+(NIL ("b") ((2 "a" 3)) ((2 "a" 3) "b") (1) (1 "b") (1 (2 "a" 3)) (1 (2 "a" 3) "b"))
+[10]> (subsets (list (list "another" "list") "element"))
+(NIL ("element") (("another" "list")) (("another" "list") "element"))
