@@ -8,7 +8,7 @@
 
 (defun fast* (x y)
 (cond
-  ((< y 0) (- (fast* x (- y))))
-  ((= y 0) 0)
-  ((= (odd y) 1) (+ x (fast* (mul2 x) (div2 y))))
-  ((fast* (mul2 x) (div2 y)))))
+        ((< y 0) (- (fast* x (- y))))
+        ((= y 0) 0)
+        ((= (odd y) 1) (+ x (fast* (mul2 x) (div2 y))))
+        ((fast* (mul2 x) (div2 y)))))
