@@ -21,13 +21,13 @@
                 do (if (delimiterp (char s right)) (progn
                         (setq res (concatenate 'string res (process-word bag (substr s (+ left 1) right))))
                         (setq left right)
-                        (setq res (concatenate 'string res  (coerce (list (char s right)) 'string))))))
+                        (setq res (concatenate 'string res (coerce (list (char s right)) 'string))))))
         (subseq res 0 (- (length res) 1))))
 
-(defun recursive-text-trim (bag lst res)
-        (if (null lst) res
-        (recursive-text-trim bag (rest lst) (cons (process-string bag (first lst)) res))))
+(defun recursive-text-trim (bag lst)
+        (if (null lst) '()
+        (cons (process-string bag (first lst)) (recursive-text-trim bag (rest lst)))))
 
 (defun text-trim (bag lst)
-        (let ((lst-copy lst) (res '()))
-        (reverse (recursive-text-trim bag lst-copy res))))
+        (let ((lst-copy lst))
+        (recursive-text-trim bag lst-copy)))
